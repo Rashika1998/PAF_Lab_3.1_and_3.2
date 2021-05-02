@@ -157,6 +157,11 @@ public class Item {
 	return output; 
 	}
 	
+	public void updateItems() 
+	{
+		//update function goes hete
+	}
+	
 	
 	
 
