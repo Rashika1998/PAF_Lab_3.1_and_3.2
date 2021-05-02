@@ -45,23 +45,23 @@ public class Item {
 	 return "Error while connecting to the database";
 	 }
 	 // create a prepared statement
-	 String query = " insert into items(`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)" + " values (?, ?, ?, ?, ?)";
-	 PreparedStatement preparedStmt = con.prepareStatement(query);
-	 // binding values
-	 preparedStmt.setInt(1, 0);
-	 preparedStmt.setString(2, code);
-	 preparedStmt.setString(3, name);
-	 preparedStmt.setDouble(4, Double.parseDouble(price));
-	 preparedStmt.setString(5, desc); 
-	 //execute the statement
-	 preparedStmt.execute();
-	 con.close();
-	 output = "Inserted successfully";
+		 String query = " insert into items(`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)" + " values (?, ?, ?, ?, ?)";
+		 PreparedStatement preparedStmt = con.prepareStatement(query);
+		 // binding values
+		 preparedStmt.setInt(1, 0);
+		 preparedStmt.setString(2, code);
+		 preparedStmt.setString(3, name);
+		 preparedStmt.setDouble(4, Double.parseDouble(price));
+		 preparedStmt.setString(5, desc); 
+		 //execute the statement
+		 preparedStmt.execute();
+		 con.close();
+		 output = "Inserted successfully";
 	 }
 	catch (Exception e)
 	 {
-	 output = "Error while inserting";
-	 System.err.println(e.getMessage());
+		 output = "Error while inserting";
+		 System.err.println(e.getMessage());
 	 }
 	return output;
 	}
@@ -91,24 +91,24 @@ public class Item {
 	 // iterate through the rows in the result set
 	 while (rs.next()) 
 	 { 
-	 String itemID = Integer.toString(rs.getInt("itemID")); 
-	 String itemCode = rs.getString("itemCode"); 
-	 String itemName = rs.getString("itemName"); 
-	 String itemPrice = Double.toString(rs.getDouble("itemPrice")); 
-	 String itemDesc = rs.getString("itemDesc"); 
-	 // Add a row into the html table
-	 output += "<tr><td>" + itemCode + "</td>"; 
-	 output += "<td>" + itemName + "</td>"; 
-	 output += "<td>" + itemPrice + "</td>";
-	 output += "<td>" + itemDesc + "</td>";
-	 // buttons
-	 output += "<td><input name='btnUpdate' " 
-	 + " type='button' value='Update'></td>"
-	 + "<td><form method='post' action='items.jsp'>"
-	 + "<input name='btnRemove' " 
-	 + " type='submit' value='Remove'>"
-	 + "<input name='itemID' type='hidden' " 
-	 + " value='" + itemID + "'>" + "</form></td></tr>"; 
+		 String itemID = Integer.toString(rs.getInt("itemID")); 
+		 String itemCode = rs.getString("itemCode"); 
+		 String itemName = rs.getString("itemName"); 
+		 String itemPrice = Double.toString(rs.getDouble("itemPrice")); 
+		 String itemDesc = rs.getString("itemDesc"); 
+		 // Add a row into the html table
+		 output += "<tr><td>" + itemCode + "</td>"; 
+		 output += "<td>" + itemName + "</td>"; 
+		 output += "<td>" + itemPrice + "</td>";
+		 output += "<td>" + itemDesc + "</td>";
+		 // buttons
+		 output += "<td><input name='btnUpdate' " 
+		 + " type='button' value='Update'></td>"
+		 + "<td><form method='post' action='items.jsp'>"
+		 + "<input name='btnRemove' " 
+		 + " type='submit' value='Remove'>"
+		 + "<input name='itemID' type='hidden' " 
+		 + " value='" + itemID + "'>" + "</form></td></tr>"; 
 	 } 
 	 con.close(); 
 	 // Complete the html table
